@@ -1,0 +1,58 @@
+{
+  "name": "@metaxia/scriptures",
+  "version": "0.1.0",
+  "description": "A batteries-included JavaScript library for biblical scriptures, morphology, and lexicons. Bundles core library with all official data sources.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "test -f node_modules/.bin/tsc && npm run build || true",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "bible",
+    "scripture",
+    "gematria",
+    "hebrew",
+    "greek",
+    "morphology",
+    "strongs",
+    "kjv",
+    "textus-receptus",
+    "septuagint"
+  ],
+  "author": "Benjamin Plunkert",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/metaxiamultimedia/scriptures-js"
+  },
+  "bugs": {
+    "url": "https://github.com/metaxiamultimedia/scriptures-js/issues"
+  },
+  "homepage": "https://github.com/metaxiamultimedia/scriptures-js#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@metaxia/scriptures-core": "git+ssh://git@github.com/metaxiamultimedia/scriptures-js-core",
+    "@metaxia/scriptures-source-openscriptures-ohb": "git+ssh://git@github.com/metaxiamultimedia/scriptures-js-source-openscriptures-ohb",
+    "@metaxia/scriptures-source-crosswire-kjv": "git+ssh://git@github.com/metaxiamultimedia/scriptures-js-source-crosswire-kjv",
+    "@metaxia/scriptures-source-byztxt-tr": "git+ssh://git@github.com/metaxiamultimedia/scriptures-js-source-byztxt-tr",
+    "@metaxia/scriptures-source-stepbible-lexicon": "git+ssh://git@github.com/metaxiamultimedia/scriptures-js-source-stepbible-lexicon"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  }
+}
