@@ -46,11 +46,11 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@metaxia/scriptures-core": "git+ssh://git@github.com/metaxiamultimedia/scriptures-js-core",
-    "@metaxia/scriptures-source-openscriptures-ohb": "git+ssh://git@github.com/metaxiamultimedia/scriptures-js-source-openscriptures-ohb",
-    "@metaxia/scriptures-source-crosswire-kjv": "git+ssh://git@github.com/metaxiamultimedia/scriptures-js-source-crosswire-kjv",
-    "@metaxia/scriptures-source-byztxt-tr": "git+ssh://git@github.com/metaxiamultimedia/scriptures-js-source-byztxt-tr",
-    "@metaxia/scriptures-source-stepbible-lexicon": "git+ssh://git@github.com/metaxiamultimedia/scriptures-js-source-stepbible-lexicon"
+    "@metaxia/scriptures-core": "^0.1.0",
+    "@metaxia/scriptures-source-byztxt-tr": "^0.1.0",
+    "@metaxia/scriptures-source-crosswire-kjv": "^0.1.0",
+    "@metaxia/scriptures-source-openscriptures-ohb": "^0.1.0",
+    "@metaxia/scriptures-source-stepbible-lexicon": "^0.1.0"
   },
   "devDependencies": {
     "typescript": "^5.3.0"
