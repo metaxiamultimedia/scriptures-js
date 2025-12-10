@@ -41,9 +41,9 @@ The gematria system supports Hebrew, Greek, and English calculations with multip
 |--------|-------------|-------------|
 | Standard | Mispar Hechrachi | Traditional letter values (א=1, י=10, ק=100, etc.) |
 | Ordinal | Mispar Siduri | Alphabetic position (1-22) |
-| Reduced | Mispar Katan | Digital root of standard value |
+| Reduced | Mispar Katan | Each letter reduced to single digit, then summed |
 
-Example: **בראשית** (Bereshit) = **913** standard, **76** ordinal, **4** reduced
+Example: **בראשית** (Bereshit) = **913** standard, **76** ordinal, **13** reduced
 
 ### Greek Isopsephy
 
@@ -51,9 +51,9 @@ Example: **בראשית** (Bereshit) = **913** standard, **76** ordinal, **4** r
 |--------|-------------|
 | Standard | Traditional Greek numeral values (α=1, ι=10, ρ=100, etc.) |
 | Ordinal | Alphabetic position (1-24) |
-| Reduced | Digital root of standard value |
+| Reduced | Digital root of standard value (always 1-9) |
 
-Example: **λογος** (logos) = **373** standard
+Example: **λογος** (logos) = **373** standard, **62** ordinal, **4** reduced
 
 ### English Gematria
 
