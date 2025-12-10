@@ -31,6 +31,36 @@ const value = gematria.compute(verse.text, { language: 'hebrew', method: 'standa
 const definition = await lookupStrongs('H7225');
 ```
 
+## Gematria
+
+The gematria system supports Hebrew, Greek, and English calculations with multiple methods.
+
+### Hebrew Gematria
+
+| Method | Hebrew Name | Description |
+|--------|-------------|-------------|
+| Standard | Mispar Hechrachi | Traditional letter values (א=1, י=10, ק=100, etc.) |
+| Ordinal | Mispar Siduri | Alphabetic position (1-22) |
+| Reduced | Mispar Katan | Digital root of standard value |
+
+Example: **בראשית** (Bereshit) = **913** standard, **76** ordinal, **4** reduced
+
+### Greek Isopsephy
+
+| Method | Description |
+|--------|-------------|
+| Standard | Traditional Greek numeral values (α=1, ι=10, ρ=100, etc.) |
+| Ordinal | Alphabetic position (1-24) |
+| Reduced | Digital root of standard value |
+
+Example: **λογος** (logos) = **373** standard
+
+### English Gematria
+
+| Method | Description |
+|--------|-------------|
+| Ordinal | A=1 through Z=26 |
+
 ## For Advanced Users
 
 If you only need specific sources or want finer control over bundle size, install `@metaxia/scriptures-core` directly and add only the sources you need:
