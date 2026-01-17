@@ -8,12 +8,12 @@ This package provides a complete, ready-to-use solution for scripture analysis b
 
 | Package | Description |
 |---------|-------------|
-| `@metaxia/scriptures-core` | Core API, gematria, morphology parsing, registry |
-| `@metaxia/scriptures-source-openscriptures-ohb` | Hebrew Bible (Open Scriptures Project) |
-| `@metaxia/scriptures-source-crosswire-kjv` | King James Version (CrossWire) |
-| `@metaxia/scriptures-source-byztxt-tr` | Greek New Testament (Byzantine Textus Receptus) |
-| `@metaxia/scriptures-source-huggingface-hmcgovern-original-language-bibles-greek-stepbible-tagnt-tr` | Greek New Testament (STEP Bible TAGNT Textus Receptus) |
-| `@metaxia/scriptures-source-stepbible-lexicon` | Hebrew & Greek lexicons (STEP Bible) |
+| [`@metaxia/scriptures-core`](https://github.com/metaxiamultimedia/scriptures-js-core) | Core API, gematria, morphology parsing, registry |
+| [`@metaxia/scriptures-source-openscriptures-ohb`](https://github.com/metaxiamultimedia/scriptures-js-source-openscriptures-ohb) | Hebrew Bible (Open Scriptures Project) |
+| [`@metaxia/scriptures-source-crosswire-kjv`](https://github.com/metaxiamultimedia/scriptures-js-source-crosswire-kjv) | King James Version (CrossWire) |
+| [`@metaxia/scriptures-source-byztxt-tr`](https://github.com/metaxiamultimedia/scriptures-js-source-byztxt-tr) | Greek New Testament (Byzantine Textus Receptus) |
+| [`@metaxia/scriptures-source-huggingface-hmcgovern-original-language-bibles-greek-stepbible-tagnt-tr`](https://github.com/metaxiamultimedia/scriptures-js-source-huggingface-hmcgovern-original-language-bibles-greek-stepbible-tagnt-tr) | Greek New Testament (STEP Bible TAGNT Textus Receptus) |
+| [`@metaxia/scriptures-source-stepbible-lexicon`](https://github.com/metaxiamultimedia/scriptures-js-source-stepbible-lexicon) | Hebrew & Greek lexicons (STEP Bible) |
 
 ## Installation
 
