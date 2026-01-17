@@ -12,6 +12,7 @@ This package provides a complete, ready-to-use solution for scripture analysis b
 | `@metaxia/scriptures-source-openscriptures-ohb` | Hebrew Bible (Open Scriptures Project) |
 | `@metaxia/scriptures-source-crosswire-kjv` | King James Version (CrossWire) |
 | `@metaxia/scriptures-source-byztxt-tr` | Greek New Testament (Byzantine Textus Receptus) |
+| `@metaxia/scriptures-source-huggingface-hmcgovern-original-language-bibles-greek-stepbible-tagnt-tr` | Greek New Testament (STEP Bible TAGNT Textus Receptus) |
 | `@metaxia/scriptures-source-stepbible-lexicon` | Hebrew & Greek lexicons (STEP Bible) |
 
 ## Installation
