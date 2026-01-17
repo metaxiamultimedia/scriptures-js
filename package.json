@@ -1,6 +1,6 @@
 {
   "name": "@metaxia/scriptures",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "A batteries-included JavaScript library for biblical scriptures, morphology, and lexicons. Bundles core library with all official data sources.",
   "type": "module",
   "main": "./dist/index.js",
@@ -51,7 +51,8 @@
     "@metaxia/scriptures-source-crosswire-kjv": "git+https://github.com/metaxiamultimedia/scriptures-js-source-crosswire-kjv.git#v0.1.4",
     "@metaxia/scriptures-source-openscriptures-ohb": "git+https://github.com/metaxiamultimedia/scriptures-js-source-openscriptures-ohb.git#v0.1.5",
     "@metaxia/scriptures-source-stepbible-lexicon": "git+https://github.com/metaxiamultimedia/scriptures-js-source-stepbible-lexicon.git#v0.1.4",
-    "@metaxia/scriptures-source-huggingface-hmcgovern-original-language-bibles-greek-stepbible-tagnt-tr": "git+https://github.com/metaxiamultimedia/scriptures-js-source-huggingface-hmcgovern-original-language-bibles-greek-stepbible-tagnt-tr.git#v0.1.6"
+    "@metaxia/scriptures-source-huggingface-hmcgovern-original-language-bibles-greek-stepbible-tagnt-tr": "git+https://github.com/metaxiamultimedia/scriptures-js-source-huggingface-hmcgovern-original-language-bibles-greek-stepbible-tagnt-tr.git#v0.1.6",
+    "@metaxia/scriptures-source-stepbible-tagnt-tr": "git+https://github.com/metaxiamultimedia/scriptures-js-source-stepbible-tagnt-tr.git#v1.0.0"
   },
   "devDependencies": {
     "typescript": "^5.3.0"
