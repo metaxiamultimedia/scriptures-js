@@ -1,6 +1,6 @@
 {
   "name": "@metaxia/scriptures",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "A batteries-included JavaScript library for biblical scriptures, morphology, and lexicons. Bundles core library with all official data sources.",
   "type": "module",
   "main": "./dist/index.js",
@@ -51,8 +51,7 @@
     "@metaxia/scriptures-source-crosswire-kjv": "^0.1.5",
     "@metaxia/scriptures-source-openscriptures-ohb": "^0.1.6",
     "@metaxia/scriptures-source-stepbible-lexicon": "^0.1.4",
-    "@metaxia/scriptures-source-huggingface-hmcgovern-original-language-bibles-greek-stepbible-tagnt-tr": "^0.1.6",
-    "@metaxia/scriptures-source-stepbible-tagnt-tr": "^1.0.1"
+    "@metaxia/scriptures-source-stepbible-tagnt-tr": "^1.0.2"
   },
   "devDependencies": {
     "typescript": "^5.3.0"
