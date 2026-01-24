@@ -7,5 +7,5 @@ export { parseLemma, buildTransliterationSync, buildTransliteration, lookupTrans
 // Import sources to trigger auto-registration
 import '@metaxia/scriptures-source-openscriptures-ohb';
 import '@metaxia/scriptures-source-crosswire-kjv';
-import '@metaxia/scriptures-source-byztxt-tr';
+import '@metaxia/scriptures-source-stepbible-tagnt-tr';
 import '@metaxia/scriptures-source-stepbible-lexicon';
