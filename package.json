@@ -1,6 +1,6 @@
 {
   "name": "@metaxia/scriptures",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "A batteries-included JavaScript library for biblical scriptures, morphology, and lexicons. Bundles core library with all official data sources.",
   "type": "module",
   "main": "./dist/index.js",
@@ -46,7 +46,7 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@metaxia/scriptures-core": "^2.0.0",
+    "@metaxia/scriptures-core": "^2.1.0",
     "@metaxia/scriptures-source-crosswire-kjv": "^2.0.1",
     "@metaxia/scriptures-source-openscriptures-ohb": "^2.0.0",
     "@metaxia/scriptures-source-stepbible-lexicon": "^2.0.0",
