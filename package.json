@@ -1,6 +1,6 @@
 {
   "name": "@metaxia/scriptures",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "A batteries-included JavaScript library for biblical scriptures, morphology, and lexicons. Bundles core library with all official data sources.",
   "type": "module",
   "publishConfig": {

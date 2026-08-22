@@ -11,9 +11,9 @@ This package provides a complete, ready-to-use solution for scripture analysis b
 | [`@metaxia/scriptures-core`](https://github.com/metaxiamultimedia/scriptures-js-core) | Core API, gematria, morphology parsing, registry |
 | [`@metaxia/scriptures-source-openscriptures-ohb`](https://github.com/metaxiamultimedia/scriptures-js-source-openscriptures-ohb) | Hebrew Bible (Open Scriptures Project) |
 | [`@metaxia/scriptures-source-crosswire-kjv`](https://github.com/metaxiamultimedia/scriptures-js-source-crosswire-kjv) | King James Version (CrossWire) |
-| [`@metaxia/scriptures-source-byztxt-tr`](https://github.com/metaxiamultimedia/scriptures-js-source-byztxt-tr) | Greek New Testament (Byzantine Textus Receptus) |
-| [`@metaxia/scriptures-source-huggingface-hmcgovern-original-language-bibles-greek-stepbible-tagnt-tr`](https://github.com/metaxiamultimedia/scriptures-js-source-stepbible-tagnt-tr) | Greek New Testament (STEP Bible TAGNT Textus Receptus) |
+| [`@metaxia/scriptures-source-stepbible-tagnt-tr`](https://github.com/metaxiamultimedia/scriptures-js-source-stepbible-tagnt-tr) | Greek New Testament (STEP Bible TAGNT, Textus Receptus) |
 | [`@metaxia/scriptures-source-stepbible-lexicon`](https://github.com/metaxiamultimedia/scriptures-js-source-stepbible-lexicon) | Hebrew & Greek lexicons (STEP Bible) |
+| [`@metaxia/scriptures-source-stepbible-versification`](https://github.com/metaxiamultimedia/scriptures-js-source-stepbible-versification) | Cross-tradition versification (MT / LXX / English), STEPBible TVTMS |
 
 ## Installation
 
@@ -97,5 +97,8 @@ must comply with those terms:
 - **King James Version text** — provided by the CrossWire Bible Society (from their
   OSIS XML), via `@metaxia/scriptures-source-crosswire-kjv`. Public domain (Crown
   Copyright in the United Kingdom); no attribution required.
+- **Versification mapping (TVTMS)** — STEP Bible, Tyndale House, Cambridge, via
+  `@metaxia/scriptures-source-stepbible-versification`. **CC BY 4.0** — attribution
+  required.
 
 See each source package's `LICENSE` for the exact required attribution.
