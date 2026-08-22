@@ -79,4 +79,23 @@ const verse = await getVerse('Genesis', 1, 1, { edition: 'crosswire-KJV' });
 
 ## License
 
-MIT
+The `scriptures-js` package code is licensed **MIT**.
+
+This package bundles data-source packages by dependency, and each carries its own
+license and provider. When you redistribute output that includes their data, you
+must comply with those terms:
+
+- **Hebrew text & morphology** — Open Scriptures Hebrew Bible (based on the
+  Westminster Leningrad Codex), via `@metaxia/scriptures-source-openscriptures-ohb`.
+  **CC BY 4.0** — attribution required.
+- **Lexical data (TBESH / TBESG / TFLSJ)** — STEP Bible, Tyndale House, Cambridge,
+  via `@metaxia/scriptures-source-stepbible-lexicon`. **CC BY 4.0** — attribution
+  required.
+- **Greek New Testament (TAGNT, Textus Receptus)** — STEP Bible, Tyndale House,
+  Cambridge, via `@metaxia/scriptures-source-stepbible-tagnt-tr`. **CC BY 4.0** —
+  attribution required.
+- **King James Version text** — provided by the CrossWire Bible Society (from their
+  OSIS XML), via `@metaxia/scriptures-source-crosswire-kjv`. Public domain (Crown
+  Copyright in the United Kingdom); no attribution required.
+
+See each source package's `LICENSE` for the exact required attribution.
