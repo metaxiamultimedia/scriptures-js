@@ -4,6 +4,8 @@
 
 This package provides a complete, ready-to-use solution for scripture analysis by bundling the core library with all official data sources.
 
+It powers [GematriaBible.com](https://gematriabible.com) — an interlinear Bible with gematria values and Strong's numbers.
+
 ## Included Packages
 
 | Package | Description |
