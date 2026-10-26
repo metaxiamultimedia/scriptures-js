@@ -3,6 +3,7 @@ node_modules/
 
 # Build output
 dist/
+*.tgz
 
 # Test coverage
 coverage/
@@ -23,8 +24,12 @@ npm-debug.log*
 
 # Environment
 .env
-.env.local
+.env.*
 
 # Cache
 .cache/
 *.tsbuildinfo
+__pycache__/
+
+# npm run report output (not committed)
+docs/
