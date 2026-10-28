@@ -52,6 +52,24 @@ export interface AlignedWord {
   suffixes?: string[];
   /** The OHB eStrong of the root, e.g. "H1540", "H1004b"; undefined for prefix-only lemmas. */
   ohbEStrong?: string;
+  /**
+   * TAHOT's Transliteration column for the TAHOT word this OHB word was aligned
+   * to, unchanged (e.g. "va/i.Yo.mer"; "/" between prefixes, root and suffixes as
+   * STEPBible writes it). For a Qere row it is the Qere reading, also on the
+   * Ketiv word that shares the row (see `ketivTransliteration`). For one word of
+   * a Qere that TAHOT prints as one row with "//" between the words, it is that
+   * word's part. Undefined for "augmented" and "unaligned" words.
+   */
+  transliteration?: string;
+  /**
+   * The Ketiv's transliteration as TAHOT records it for a Qere row
+   * ("K= translit (HEBREW) ..." in the meaning-variants column). Set on every OHB
+   * word aligned to such a row (the Ketiv and its Qere). Undefined when TAHOT
+   * gives no K= (e.g. a "Q(k)" spelling variant).
+   */
+  ketivTransliteration?: string;
+  /** Where `transliteration` comes from: STEPBible TAHOT, or nothing ("none") when the word has no TAHOT row. */
+  transliterationSource: 'stepbible-tahot' | 'none';
   /** Why the word is unaligned, or a note on how it was aligned. */
   note?: string;
 }
@@ -101,6 +119,13 @@ export function ketivForms(row: TahotWord): string[] {
   if (meaning) forms.push(meaning[1]);
   for (const m of row.spellingVariants.matchAll(/(?:^|;)\s*([KL])=\s*([^¦;]+)/g)) forms.push(m[2]);
   return forms.map(consonants).filter(Boolean);
+}
+
+/** The Ketiv's transliteration as TAHOT records it: K= translit (HEBREW) ...; undefined when there is no K=. */
+export function ketivTransliteration(row: Pick<TahotWord, 'meaningVariants'>): string | undefined {
+  const m = /(?:^|;)\s*K=\s*([^(]*)\(/.exec(row.meaningVariants);
+  const t = m?.[1].trim();
+  return t ? t : undefined;
 }
 
 /** The Ketiv's own tags as TAHOT records them: K= translit (HEBREW) "gloss" (TAGS=GRAMMAR). */
@@ -162,6 +187,7 @@ export function alignVerse(
     ...(w.variant ? { variant: w.variant } : {}),
     method: 'unaligned' as AlignMethod,
     ohbEStrong: ohbEStrong(w.lemma),
+    transliterationSource: 'none' as const,
   }));
   const taken = new Map<TahotWord, number>();
   const assign = (i: number, row: TahotWord, method: AlignMethod, note?: string) => {
@@ -171,6 +197,10 @@ export function alignVerse(
     r.prefixes = row.prefixes;
     r.roots = row.roots;
     r.suffixes = row.suffixes;
+    r.transliteration = row.transliteration;
+    r.transliterationSource = 'stepbible-tahot';
+    const kt = row.type.startsWith('Q') ? ketivTransliteration(row) : undefined;
+    if (kt !== undefined) r.ketivTransliteration = kt;
     if (note) r.note = note;
     // A Ketiv shares its TAHOT row with the Qere that TAHOT prints.
     if (method !== 'ketiv') taken.set(row, i);
@@ -249,6 +279,7 @@ export function alignVerse(
     if (row && row.type.startsWith('Q') && !taken.has(row)) {
       const parts = row.hebrew.split('\\')[0].split('//');
       const tagParts = row.dStrongs.split('\\')[0].split('//');
+      const translitParts = row.transliteration.split('//');
       if (parts.length === j - i && tagParts.length === parts.length &&
           parts.every((p, q) => consonants(p) === consonants(ohb[i + q].text))) {
         for (let q = 0; q < parts.length; q++) {
@@ -257,6 +288,12 @@ export function alignVerse(
           result[i + q].prefixes = tags.prefixes;
           result[i + q].roots = tags.roots;
           result[i + q].suffixes = tags.suffixes;
+          // TAHOT writes "//" between the words in the Transliteration column too.
+          if (translitParts.length === parts.length) result[i + q].transliteration = translitParts[q];
+          else {
+            result[i + q].transliteration = undefined;
+            result[i + q].transliterationSource = 'none';
+          }
         }
       }
     }

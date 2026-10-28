@@ -59,7 +59,34 @@ const verses = assembleChapter('Nehemiah', 7);
 | `originalChapters(book)` | original-language chapter numbers of a book |
 | `sharedEnglishVerses(book)` | KJV verses that more than one original verse maps to |
 | `alignVerse(...)`, `consonants(text)`, `ohbEStrong(lemma)` | the alignment itself and its helpers |
+| `headwordsForSStrong(strongs)`, `eStrongOfWord(word)`, `eStrongOfTag(dStrong)` | TBESH headwords of a Strong's number, one per eStrong |
 | `BOOKS`, `bookInfo(book)` | book names, OSIS codes and testaments |
+
+### Transliteration (new in 3.1.0)
+
+Each word carries TAHOT's own transliteration of the TAHOT word it is aligned
+to, unchanged:
+
+| field | |
+|---|---|
+| `transliteration` | TAHOT's Transliteration column, e.g. Gen 1:3 `va/i.Yo.mer`, Gen 6:21 `ve./la./Hem`. For a Qere row it is the Qere reading (also on the Ketiv word that shares the row). |
+| `ketivTransliteration` | the Ketiv's transliteration that TAHOT records with `K=` on a Qere row (e.g. Gen 24:33 `va/i.yi.sem`); undefined when there is no `K=` |
+| `transliterationSource` | `'stepbible-tahot'`, or `'none'` for the words with no TAHOT row (63 words: 40 outside Qere, listed in `tests/fixtures/transliteration-uncovered.json`) |
+
+The library returns TAHOT's value unchanged in these fields, for every word,
+including the divine name (TAHOT `Yah.weh`). `transliterate()` (SBL rules, from
+scriptures-core) is still exported and is not used for these fields.
+
+### Strong's headwords (new in 3.1.0)
+
+`headwordsForSStrong('H1004')` returns one headword per extended Strong's
+number (eStrong) of the number, in TBESH file order: `H1004a` בֵּית `bet` and
+`H1004b` בַּ֫יִת `ba.yit`. Each headword lists the distinct lemma and
+transliteration pairs of its TBESH rows (`forms`), with the dStrongs of each.
+A lemma written as a comma list names spelling variants of a name; each variant
+has its own gematria (`variants[].gematria`, scriptures-core `computeHebrew`),
+and the values are never added together. `eStrongOfWord(word)` gives the eStrong
+of a word from STEPBible's root tag (through TBESH), else from the OHB eStrong.
 
 Words are aligned by Hebrew reference and TAHOT word number, then by
 STEPBible's sStrong + instance method, then by STEPBible's augmented Strong's
@@ -195,6 +222,9 @@ data, you must comply with those terms:
   created by www.STEPBible.org based on work at Tyndale House Cambridge,
   **CC BY 4.0**, attribution required. `hebrewVerseWords()` matches TAHOT's
   words to the OHB words; it does not change the data.
+- **Transliterations**: TAHOT's own transliteration of each word (above),
+  STEPBible, **CC BY 4.0**. The data and the API return TAHOT's value
+  unchanged.
 - **augmented_strongs.txt**: from the STEPBible software
   ([STEPBible/step](https://github.com/STEPBible/step)), **BSD 3-Clause**,
   Copyright (c) 2012, STEPBible; in `@metaxia/scriptures-source-stepbible-tahot`.

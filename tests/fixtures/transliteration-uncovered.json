@@ -1,0 +1,446 @@
+{
+ "description": "OHB words with no STEPBible TAHOT row, so no transliteration (transliterationSource \"none\"). Measured with OHB 3.0.0 + TAHOT 1.0.0. 40 are words the reader shows (20 augmented, 20 unaligned); 23 are Qere words.",
+ "words": [
+  {
+   "ref": "Exod.4.2",
+   "position": 6,
+   "text": "זֶּ֣ה",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "Num.7.59",
+   "position": 17,
+   "text": "פְּדָה",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "Num.7.59",
+   "position": 18,
+   "text": "צֽוּר",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "Deut.5.10",
+   "position": 6,
+   "text": "מצותו",
+   "variant": "ketiv",
+   "method": "unaligned"
+  },
+  {
+   "ref": "Judg.20.13",
+   "position": 15,
+   "text": "בְּנֵ֣י",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "Ruth.3.5",
+   "position": 5,
+   "text": "תֹּאמְרִ֥י",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "Ruth.3.5",
+   "position": 6,
+   "text": "אֵלַ֖י",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "Ruth.3.17",
+   "position": 9,
+   "text": "אֵלַ֔י",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "1Sam.26.7",
+   "position": 20,
+   "text": "סביבתו",
+   "variant": "ketiv",
+   "method": "unaligned"
+  },
+  {
+   "ref": "1Sam.29.5",
+   "position": 13,
+   "text": "ברבבתו",
+   "variant": "ketiv",
+   "method": "unaligned"
+  },
+  {
+   "ref": "2Sam.8.3",
+   "position": 13,
+   "text": "פְּרָֽת",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "2Sam.16.23",
+   "position": 9,
+   "text": "אִ֖ישׁ",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "2Sam.18.3",
+   "position": 31,
+   "text": "לעזיר",
+   "variant": "ketiv",
+   "method": "unaligned"
+  },
+  {
+   "ref": "2Sam.18.17",
+   "position": 20,
+   "text": "לאהלו",
+   "variant": "ketiv",
+   "method": "unaligned"
+  },
+  {
+   "ref": "2Sam.18.20",
+   "position": 19,
+   "text": "עַל",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "2Sam.23.8",
+   "position": 20,
+   "text": "אחד",
+   "variant": "ketiv",
+   "method": "unaligned"
+  },
+  {
+   "ref": "2Kgs.6.25",
+   "position": 16,
+   "text": "חרי",
+   "variant": "ketiv",
+   "method": "unaligned"
+  },
+  {
+   "ref": "2Kgs.6.25",
+   "position": 17,
+   "text": "יונים",
+   "variant": "ketiv",
+   "method": "unaligned"
+  },
+  {
+   "ref": "2Kgs.11.20",
+   "position": 12,
+   "text": "מלך",
+   "variant": "ketiv",
+   "method": "unaligned"
+  },
+  {
+   "ref": "2Kgs.18.27",
+   "position": 28,
+   "text": "רַגְלֵיהֶ֖ם",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "2Kgs.19.31",
+   "position": 10,
+   "text": "צְבָא֖וֹת",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "2Kgs.19.37",
+   "position": 9,
+   "text": "בָּנָיו֙",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "1Chr.9.4",
+   "position": 11,
+   "text": "מִן",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "1Chr.15.13",
+   "position": 3,
+   "text": "בָּרִ֥אשׁוֹנָ֖ה",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "1Chr.15.13",
+   "position": 9,
+   "text": "בָּ֔נוּ",
+   "variant": null,
+   "method": "unaligned"
+  },
+  {
+   "ref": "1Chr.20.4",
+   "position": 3,
+   "text": "כֵ֔ן",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "1Chr.27.12",
+   "position": 8,
+   "text": "יְמִינִ֑י",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "2Chr.20.1",
+   "position": 3,
+   "text": "כֵ֡ן",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "2Chr.20.35",
+   "position": 2,
+   "text": "כֵ֗ן",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "2Chr.24.4",
+   "position": 3,
+   "text": "כֵ֑ן",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "2Chr.30.3",
+   "position": 12,
+   "text": "דַּ֔י",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "Ezra.3.5",
+   "position": 2,
+   "text": "כֵ֞ן",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "Ezra.10.29",
+   "position": 8,
+   "text": "ירמות",
+   "variant": "ketiv",
+   "method": "unaligned"
+  },
+  {
+   "ref": "Neh.2.13",
+   "position": 19,
+   "text": "פְּרוּצִ֔ים",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "Job.19.29",
+   "position": 11,
+   "text": "שדין",
+   "variant": "ketiv",
+   "method": "unaligned"
+  },
+  {
+   "ref": "Ps.10.10",
+   "position": 8,
+   "text": "כָּאִֽים",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "Ps.44.15",
+   "position": 6,
+   "text": "בַּל",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "Ps.44.15",
+   "position": 7,
+   "text": "אֻמִּֽים",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "Ps.55.16",
+   "position": 3,
+   "text": "מָ֨וֶת",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "Ps.57.10",
+   "position": 5,
+   "text": "בַּל",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "Ps.106.1",
+   "position": 2,
+   "text": "יָ֨הּ",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "Ps.108.4",
+   "position": 5,
+   "text": "בַּל",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "Ps.149.7",
+   "position": 5,
+   "text": "בַּל",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "Song.6.12",
+   "position": 7,
+   "text": "נָדִֽיב",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "Song.8.6",
+   "position": 19,
+   "text": "יָֽה",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "Isa.3.15",
+   "position": 3,
+   "text": "לָּכֶם֙",
+   "variant": "qere",
+   "method": "unaligned"
+  },
+  {
+   "ref": "Isa.9.5",
+   "position": 19,
+   "text": "עַ֖ד",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "Isa.36.12",
+   "position": 27,
+   "text": "רַגְלֵיהֶ֖ם",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "Jer.6.21",
+   "position": 18,
+   "text": "יאבדו",
+   "variant": "ketiv",
+   "method": "unaligned"
+  },
+  {
+   "ref": "Jer.6.29",
+   "position": 5,
+   "text": "תַּ֣ם",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "Jer.18.3",
+   "position": 6,
+   "text": "ה֛וּא",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "Jer.29.23",
+   "position": 18,
+   "text": "הו",
+   "variant": "ketiv",
+   "method": "unaligned"
+  },
+  {
+   "ref": "Jer.29.23",
+   "position": 19,
+   "text": "ידע",
+   "variant": "ketiv",
+   "method": "unaligned"
+  },
+  {
+   "ref": "Jer.31.38",
+   "position": 3,
+   "text": "בָּאִ֖ים",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "Jer.50.29",
+   "position": 13,
+   "text": "לָהּ֙",
+   "variant": "qere",
+   "method": "unaligned"
+  },
+  {
+   "ref": "Lam.3.39",
+   "position": 7,
+   "text": "חטאו",
+   "variant": "ketiv",
+   "method": "unaligned"
+  },
+  {
+   "ref": "Ezek.4.6",
+   "position": 7,
+   "text": "הימיני",
+   "variant": "ketiv",
+   "method": "unaligned"
+  },
+  {
+   "ref": "Ezek.8.6",
+   "position": 9,
+   "text": "הֵ֣ם",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "Ezek.9.11",
+   "position": 13,
+   "text": "כְּכֹ֖ל",
+   "variant": "qere",
+   "method": "augmented"
+  },
+  {
+   "ref": "Ezek.44.3",
+   "position": 7,
+   "text": "לֶאֱכָול",
+   "variant": null,
+   "method": "augmented"
+  },
+  {
+   "ref": "Dan.2.39",
+   "position": 5,
+   "text": "ארעא",
+   "variant": "ketiv",
+   "method": "unaligned"
+  },
+  {
+   "ref": "Dan.5.30",
+   "position": 6,
+   "text": "כשדיא",
+   "variant": "ketiv",
+   "method": "unaligned"
+  },
+  {
+   "ref": "Dan.6.29",
+   "position": 8,
+   "text": "פרסיא",
+   "variant": "ketiv",
+   "method": "unaligned"
+  }
+ ]
+}

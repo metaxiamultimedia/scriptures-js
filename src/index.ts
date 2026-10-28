@@ -40,7 +40,10 @@ export { assembleChapter, sharedEnglishVerses, originalChapters } from './assemb
 export type { AssembledVerse, AssembleOptions, GreekWord, Ref as VerseRef } from './assemble.js';
 export { hebrewVerseWords, glossTags } from './hebrew.js';
 export type { HebrewWord, TagGloss } from './hebrew.js';
-export { alignVerse, consonants, ohbEStrong } from './tahot-align.js';
+export { alignVerse, consonants, ohbEStrong, ketivTransliteration } from './tahot-align.js';
+// TBESH headwords of a Strong's number, one per eStrong.
+export { headwordsForSStrong, eStrongOfTag, eStrongOfWord, sStrongOf } from './headwords.js';
+export type { Headword, HeadwordForm, HeadwordVariant, GematriaTriple } from './headwords.js';
 export type { AlignedWord, AlignMethod, OhbWord } from './tahot-align.js';
 export { BOOKS, bookInfo } from './books.js';
 export type { BookInfo } from './books.js';
