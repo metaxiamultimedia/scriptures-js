@@ -59,7 +59,7 @@ const verses = assembleChapter('Nehemiah', 7);
 | `originalChapters(book)` | original-language chapter numbers of a book |
 | `sharedEnglishVerses(book)` | KJV verses that more than one original verse maps to |
 | `alignVerse(...)`, `consonants(text)`, `ohbEStrong(lemma)` | the alignment itself and its helpers |
-| `headwordsForSStrong(strongs)`, `eStrongOfWord(word)`, `eStrongOfTag(dStrong)` | TBESH headwords of a Strong's number, one per eStrong |
+| `headwordsForSStrong(strongs)`, `eStrongOfWord(word)`, `eStrongOfGreekWord(word)`, `eStrongOfTag(dStrong)` | TBESH (H) or TBESG (G) headwords of a Strong's number, one per eStrong |
 | `BOOKS`, `bookInfo(book)` | book names, OSIS codes and testaments |
 
 ### Transliteration (new in 3.1.0)
@@ -87,6 +87,17 @@ A lemma written as a comma list names spelling variants of a name; each variant
 has its own gematria (`variants[].gematria`, scriptures-core `computeHebrew`),
 and the values are never added together. `eStrongOfWord(word)` gives the eStrong
 of a word from STEPBible's root tag (through TBESH), else from the OHB eStrong.
+
+Greek numbers work the same way from TBESG (new in 3.2.0):
+`headwordsForSStrong('G2424')` gives `G2424` Ἰησοῦς `Iēsous`, gematria 888
+(scriptures-core `computeGreek`). TBESG's eStrongs have no sense letters, so
+each G number has one headword; its rows can give more than one lemma (G4672
+Σολομών, Σαλωμών and Σολομών; G1086 Γερασηνός and Γεργεσηνός), and all are
+listed, including TBESG's `[unnamed]` rows for relatives of a named person
+(G4074 "wife of Peter"). `eStrongOfGreekWord(word)` gives the eStrong of a TAGNT
+word from its dStrong (through TBESG), else from TAGNT's extended Strong's
+number. A variant whose gematria scriptures-core cannot compute has no
+`gematria` (only G5516 χξϛ, whose stigma has no ordinal).
 
 Words are aligned by Hebrew reference and TAHOT word number, then by
 STEPBible's sStrong + instance method, then by STEPBible's augmented Strong's

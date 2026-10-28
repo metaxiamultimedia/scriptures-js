@@ -1,6 +1,6 @@
 /**
- * Headwords of a Strong's number from STEPBible's TBESH, by extended Strong's
- * number (eStrong).
+ * Headwords of a Strong's number from STEPBible's TBESH (Hebrew, H numbers) and
+ * TBESG (Greek, G numbers), by extended Strong's number (eStrong).
  *
  * A Strong's number can have several eStrongs (H1004a בֵּית "place", H1004b
  * בַּ֫יִת "house"). Each eStrong is one headword, in TBESH file order. A
@@ -9,9 +9,14 @@
  * A lemma written as a comma list (e.g. "אֲבִיגַ֫יִל, אֲבִיגַ֫ל") names spelling
  * variants of a name: each variant is listed with its own gematria, and the
  * values are never added together.
+ *
+ * Greek works the same way from TBESG. TBESG's eStrongs carry no sense letter
+ * (its extended numbers are further numbers, e.g. G6000 and up), so in lexicon
+ * 2.2.0 every G number has exactly one headword; its rows can still give more
+ * than one lemma (G4672 Σολομών, Σαλωμών), and those are all listed.
  */
-import { computeHebrew } from '@metaxia/scriptures-core';
-import { lexiconRows } from './data.js';
+import { computeGreek, computeHebrew } from '@metaxia/scriptures-core';
+import { lexiconRows, type SourceWord } from './data.js';
 import type { HebrewWord } from './hebrew.js';
 
 export interface GematriaTriple {
@@ -21,29 +26,33 @@ export interface GematriaTriple {
 }
 
 export interface HeadwordVariant {
-  /** One spelling, as TBESH writes it (pointed). */
+  /** One spelling, as TBESH/TBESG writes it (pointed or accented). */
   text: string;
-  /** Gematria of this spelling (scriptures-core computeHebrew: consonants only). */
-  gematria: GematriaTriple;
+  /**
+   * Gematria of this spelling (scriptures-core computeHebrew or computeGreek:
+   * letters only). Undefined only when scriptures-core cannot compute it: the
+   * one case in TBESG is G5516 χξϛ ("666"), whose stigma has no ordinal value.
+   */
+  gematria?: GematriaTriple;
 }
 
 export interface HeadwordForm {
-  /** The TBESH lemma as written, e.g. "בַּ֫יִת" or a comma list "דָּנִיֵּאל, דָּנִאֵל". */
+  /** The TBESH/TBESG lemma as written, e.g. "בַּ֫יִת" or a comma list "דָּנִיֵּאל, דָּנִאֵל". */
   lemma: string;
-  /** The TBESH transliteration of the rows with this lemma, unchanged (undefined if TBESH gives none). */
+  /** The TBESH/TBESG transliteration of the rows with this lemma, unchanged (undefined if none is given). */
   transliteration?: string;
   /** The lemma split at commas: one entry per spelling. */
   variants: HeadwordVariant[];
-  /** The dStrongs (TBESH rows) with this lemma and transliteration, in file order. */
+  /** The dStrongs (TBESH/TBESG rows) with this lemma and transliteration, in file order. */
   dStrongs: string[];
   /** Gloss of the first of those rows. */
   gloss?: string;
 }
 
 export interface Headword {
-  /** Extended Strong's number, e.g. "H1004b", "H0430". */
+  /** Extended Strong's number, e.g. "H1004b", "H0430", "G2424". */
   eStrong: string;
-  /** Simple Strong's number (four digits), e.g. "H1004". */
+  /** Simple Strong's number (at least four digits), e.g. "H1004", "G2424". */
   sStrong: string;
   /** Distinct lemma + transliteration pairs of the eStrong's rows, in file order. */
   forms: HeadwordForm[];
@@ -51,24 +60,42 @@ export interface Headword {
   dStrongs: string[];
 }
 
-/** "H1004", "H01004", "1004", "H1004b" -> "H1004". */
+/** "H1004", "H01004", "1004", "H1004b" -> "H1004"; "G02424", "G2424G" -> "G2424". No prefix means Hebrew. */
 export function sStrongOf(strongs: string): string | undefined {
-  const m = /^H?0*(\d+)/i.exec(strongs.trim());
-  return m ? `H${m[1].padStart(4, '0')}` : undefined;
+  const m = /^([HG])?0*(\d+)/i.exec(strongs.trim());
+  return m ? `${(m[1] ?? 'H').toUpperCase()}${m[2].padStart(4, '0')}` : undefined;
 }
 
-let byNumber: Map<string, Headword[]> | undefined;
-let eStrongOfDStrong: Map<string, string> | undefined;
+type Lang = 'H' | 'G';
+const LEXICON = { H: 'stepbible-tbesh', G: 'stepbible-tbesg' } as const;
+const GEMATRIA = { H: computeHebrew, G: computeGreek } as const;
+const built = new Map<Lang, { byNumber: Map<string, Headword[]>; eStrongOfDStrong: Map<string, string> }>();
 
-function build(): Map<string, Headword[]> {
-  if (byNumber) return byNumber;
-  const rows = lexiconRows('stepbible-tbesh');
-  byNumber = new Map();
-  eStrongOfDStrong = new Map();
+const langOf = (strongs: string | undefined): Lang | undefined => {
+  const c = strongs?.trim()[0]?.toUpperCase();
+  return c === 'H' || c === 'G' ? c : undefined;
+};
+
+function variant(text: string, compute: (t: string) => GematriaTriple): HeadwordVariant {
+  try {
+    return { text, gematria: compute(text) };
+  } catch {
+    // computeGreek throws on an archaic letter (stigma, koppa, sampi): it has no ordinal.
+    return { text };
+  }
+}
+
+function build(lang: Lang): { byNumber: Map<string, Headword[]>; eStrongOfDStrong: Map<string, string> } {
+  const done = built.get(lang);
+  if (done) return done;
+  const rows = lexiconRows(LEXICON[lang]);
+  const compute = GEMATRIA[lang];
+  const byNumber = new Map<string, Headword[]>();
+  const eStrongOfDStrong = new Map<string, string>();
   const byEStrong = new Map<string, Headword>();
   // Object key order is the file order (keys are dStrongs, never integer-like).
   for (const [dStrong, row] of Object.entries(rows)) {
-    if (!row.strongsExtended?.startsWith('H')) continue;
+    if (!row.strongsExtended?.startsWith(lang)) continue;
     eStrongOfDStrong.set(dStrong, row.strongsExtended);
     let hw = byEStrong.get(row.strongsExtended);
     if (!hw) {
@@ -84,7 +111,7 @@ function build(): Map<string, Headword[]> {
       form = {
         lemma: row.lemma,
         transliteration: row.transliteration,
-        variants: row.lemma.split(',').map((t) => t.trim()).filter(Boolean).map((text) => ({ text, gematria: computeHebrew(text) })),
+        variants: row.lemma.split(',').map((t) => t.trim()).filter(Boolean).map((text) => variant(text, compute)),
         dStrongs: [],
         gloss: row.gloss,
       };
@@ -92,23 +119,27 @@ function build(): Map<string, Headword[]> {
     }
     form.dStrongs.push(dStrong);
   }
-  return byNumber;
+  const out = { byNumber, eStrongOfDStrong };
+  built.set(lang, out);
+  return out;
 }
 
 /**
- * Every eStrong headword of a Hebrew Strong's number, in TBESH file order:
- * headwordsForSStrong('H1004') -> [H1004a בֵּית bet, H1004b בַּ֫יִת ba.yit].
- * Accepts "H1004", "H01004" or "1004". Empty when TBESH has no row.
+ * Every eStrong headword of a Strong's number, in lexicon file order (TBESH for
+ * H, TBESG for G): headwordsForSStrong('H1004') -> [H1004a בֵּית bet, H1004b
+ * בַּ֫יִת ba.yit]; headwordsForSStrong('G2424') -> [G2424 Ἰησοῦς Iēsous].
+ * Accepts "H1004", "H01004", "1004" (Hebrew), "G2424", "G02424". Empty when the
+ * lexicon has no row.
  */
 export function headwordsForSStrong(strongs: string): Headword[] {
   const s = sStrongOf(strongs);
-  return s ? build().get(s) ?? [] : [];
+  return s ? build(s[0] as Lang).byNumber.get(s) ?? [] : [];
 }
 
-/** The eStrong a TBESH dStrong maps to: "H1004M" -> "H1004b". */
+/** The eStrong a TBESH or TBESG dStrong maps to: "H1004M" -> "H1004b", "G2491K" -> "G2495". */
 export function eStrongOfTag(dStrong: string): string | undefined {
-  build();
-  return eStrongOfDStrong!.get(dStrong);
+  const lang = langOf(dStrong);
+  return lang ? build(lang).eStrongOfDStrong.get(dStrong) : undefined;
 }
 
 /**
@@ -117,12 +148,30 @@ export function eStrongOfTag(dStrong: string): string | undefined {
  * the OHB eStrong when TBESH has that eStrong. Undefined otherwise.
  */
 export function eStrongOfWord(word: Pick<HebrewWord, 'roots' | 'ohbEStrong'>): string | undefined {
-  build();
+  const { byNumber, eStrongOfDStrong } = build('H');
   if (word.roots?.length === 1) {
-    const e = eStrongOfDStrong!.get(word.roots[0]);
+    const e = eStrongOfDStrong.get(word.roots[0]);
     if (e) return e;
   }
   const ohb = word.ohbEStrong;
-  if (ohb && build().get(sStrongOf(ohb)!)?.some((h) => h.eStrong === ohb)) return ohb;
+  if (ohb && byNumber.get(sStrongOf(ohb)!)?.some((h) => h.eStrong === ohb)) return ohb;
+  return undefined;
+}
+
+/**
+ * The eStrong of a TAGNT word (a verse word of @metaxia/scriptures-source-
+ * stepbible-tagnt-tr): TAGNT's dStrong mapped through TBESG when the word has
+ * exactly one Strong's tag with a TBESG row ("G2424G" -> "G2424", "G2491K" ->
+ * "G2495"), else TAGNT's extended Strong's number when TBESG has that eStrong
+ * (e.g. a bare "G2453"). Undefined otherwise.
+ */
+export function eStrongOfGreekWord(word: Pick<SourceWord, 'strongs' | 'metadata'>): string | undefined {
+  const { byNumber, eStrongOfDStrong } = build('G');
+  if (word.strongs?.length === 1) {
+    const e = eStrongOfDStrong.get(word.strongs[0]);
+    if (e) return e;
+  }
+  const ext = word.metadata?.extendedStrongs;
+  if (typeof ext === 'string' && byNumber.get(sStrongOf(ext)!)?.some((h) => h.eStrong === ext)) return ext;
   return undefined;
 }

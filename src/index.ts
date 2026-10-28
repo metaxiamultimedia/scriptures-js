@@ -41,8 +41,8 @@ export type { AssembledVerse, AssembleOptions, GreekWord, Ref as VerseRef } from
 export { hebrewVerseWords, glossTags } from './hebrew.js';
 export type { HebrewWord, TagGloss } from './hebrew.js';
 export { alignVerse, consonants, ohbEStrong, ketivTransliteration } from './tahot-align.js';
-// TBESH headwords of a Strong's number, one per eStrong.
-export { headwordsForSStrong, eStrongOfTag, eStrongOfWord, sStrongOf } from './headwords.js';
+// TBESH (H) / TBESG (G) headwords of a Strong's number, one per eStrong.
+export { headwordsForSStrong, eStrongOfTag, eStrongOfWord, eStrongOfGreekWord, sStrongOf } from './headwords.js';
 export type { Headword, HeadwordForm, HeadwordVariant, GematriaTriple } from './headwords.js';
 export type { AlignedWord, AlignMethod, OhbWord } from './tahot-align.js';
 export { BOOKS, bookInfo } from './books.js';
